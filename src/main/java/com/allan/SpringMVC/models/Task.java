@@ -1,16 +1,12 @@
 package com.allan.SpringMVC.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "task_table")
 public class Task {
-
-    public Task(String name, LocalDateTime taskDate) {
-        this.name = name;
-        this.taskDate = taskDate;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +16,7 @@ public class Task {
     private String name;
 
     @Column(nullable = false)
-    private LocalDateTime taskDate;
-
+    private LocalDate taskDate;
 
     public Long getId() {
         return id;
@@ -39,11 +34,11 @@ public class Task {
         this.name = name;
     }
 
-    public LocalDateTime getTaskDate() {
+    public LocalDate getTaskDate() {
         return taskDate;
     }
 
-    public void setTaskDate(LocalDateTime taskDate) {
+    public void setTaskDate(LocalDate taskDate) {
         this.taskDate = taskDate;
     }
 }
