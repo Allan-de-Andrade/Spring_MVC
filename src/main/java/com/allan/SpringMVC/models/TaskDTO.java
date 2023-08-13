@@ -7,9 +7,18 @@ import java.time.LocalDate;
 
 public class TaskDTO {
 
+    private Long id;
     private String name;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate date;
+    @DateTimeFormat(pattern = "dd-MM-yyy")
+    private String date;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -19,11 +28,11 @@ public class TaskDTO {
         this.name = name;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate  date) {
+    public void setDate(String  date) {
         this.date = date;
     }
 }

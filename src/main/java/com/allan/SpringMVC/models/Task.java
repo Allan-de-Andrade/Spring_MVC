@@ -16,7 +16,7 @@ public class Task {
     private String name;
 
     @Column(nullable = false)
-    private LocalDate taskDate;
+    private LocalDate date;
 
     public Long getId() {
         return id;
@@ -35,10 +35,10 @@ public class Task {
     }
 
     public LocalDate getTaskDate() {
-        return taskDate;
+        return date;
     }
 
-    public void setTaskDate(LocalDate taskDate) {
-        this.taskDate = taskDate;
+    public void setTaskDate(LocalDate date) {
+        this.date = date;
     }
 }

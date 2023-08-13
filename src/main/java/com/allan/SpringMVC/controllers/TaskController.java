@@ -5,8 +5,7 @@ import com.allan.SpringMVC.models.TaskDTO;
 import com.allan.SpringMVC.services.TaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -28,14 +27,21 @@ public class TaskController {
         return modelAndView;
     }
 
-    @GetMapping("form")
+    @GetMapping("taskform")
     public String form(){
-        return "formTask";
+        return "taskForm";
     }
 
     @PostMapping("/create")
     public String saveTask(TaskDTO taskDTO) {
         taskService.saveTask(taskDTO);
         return "redirect:home";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTask(@PathVariable Long id)
+    {
+        taskService.deleteTask(id);
+        return "redirect:/home";
     }
 }
