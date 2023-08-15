@@ -29,8 +29,9 @@
                     <tr th:each="task : ${tasks}">
                         <td th:text = "${task.id}"></td>
                         <td th:text = "${task.name}"></td>
-                        <td th:text = "${task.taskDate}"></td>
+                        <td th:text = "${task.date}"></td>
                         <td>
+                            <a class="btn btn-yellow" th:href="@{/edit/{id}(id = ${task.id})}">Edit</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                Delete
                             </button>

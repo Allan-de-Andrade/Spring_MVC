@@ -40,7 +40,7 @@ public class TaskService {
 
             Task task = new Task();
             task.setName(taskDTO.getName());
-            task.setTaskDate(taskDate);
+            task.setDate(taskDate);
 
             return taskRepository.save(task);
         }
@@ -57,7 +57,7 @@ public class TaskService {
 
         if(task.isPresent()){
             task.get().setName(taskDTO.getName());
-            task.get().setTaskDate(taskDate);
+            task.get().setDate(taskDate);
         }
 
         else

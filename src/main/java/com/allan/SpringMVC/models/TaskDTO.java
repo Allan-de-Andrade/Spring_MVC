@@ -9,7 +9,7 @@ public class TaskDTO {
 
     private Long id;
     private String name;
-    @DateTimeFormat(pattern = "dd-MM-yyy")
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     private String date;
 
     public Long getId() {

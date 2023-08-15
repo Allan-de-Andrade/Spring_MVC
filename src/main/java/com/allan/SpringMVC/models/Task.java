@@ -34,11 +34,11 @@ public class Task {
         this.name = name;
     }
 
-    public LocalDate getTaskDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setTaskDate(LocalDate date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }
