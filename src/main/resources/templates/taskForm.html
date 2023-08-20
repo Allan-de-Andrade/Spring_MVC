@@ -14,32 +14,32 @@
        <h3>Registre a Task</h3>
 
 
-       <form th:object="${task}" method = "POST" action="/create" th:if="${task} == null" >
+       <form th:object="${task}" method = "POST" action="/task/create" th:if="${task} == null" >
            <div class="mb-3">
                <label class="form-label">Task name</label>
-               <input type="text" class="form-control" name = "name">
+               <input placeholder="Enter a name of task" type="text" class="form-control" name = "name" required>
            </div>
 
            <div class="mb-3">
                <label  class="form-label">Date of execute</label>
-                   <input type="date" class="form-control"  name="date" autocomplete="off"/>
+                   <input placeholder="Enter a date of task" type="date" class="form-control"  name="date" autocomplete="off" required/>
            </div>
            </div>
            <button type="submit" class="btn btn-primary">Save</button>
        </form>
 
-        <form th:object="${task}" method = "POST" th:action="@{/edit/{id}(id = ${task.id})}" th:if="${task} != null">
+        <form th:object="${task}" method = "POST" th:action="@{/task/edit/{id}(id = ${task.id})}" th:if="${task} != null">
             <div class="mb-3">
                 <label class="form-label">Task name</label>
-                <input type="text" class="form-control" name = "name" th:value="${task.name}">
+                <input placeholder="Enter a name of task" type="text" class="form-control" name = "name" th:value="${task.name}" required>
             </div>
 
             <div class="mb-3">
                 <label  class="form-label">Date of execute</label>
-                <input type="date" class="form-control"  name="date" autocomplete="off"th:value="${task.date}"/>
+                <input placeholder="Enter a date of task" type="date" class="form-control"  name="date" autocomplete="off"th:value="${task.date}" required/>
             </div>
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
         </form>
 
 

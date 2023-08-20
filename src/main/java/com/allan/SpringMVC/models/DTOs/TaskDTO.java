@@ -1,4 +1,4 @@
-package com.allan.SpringMVC.models;
+package com.allan.SpringMVC.models.DTOs;
 
 import org.springframework.cglib.core.Local;
 import org.springframework.format.annotation.DateTimeFormat;

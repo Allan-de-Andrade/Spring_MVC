@@ -1,4 +1,4 @@
-package com.allan.SpringMVC.models;
+package com.allan.SpringMVC.models.Entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,6 +17,9 @@ public class Task {
 
     @Column(nullable = false)
     private LocalDate date;
+
+    @Column(nullable = false)
+    private String taskOwner;
 
     public Long getId() {
         return id;
@@ -40,5 +43,13 @@ public class Task {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public String getTaskOwner() {
+        return taskOwner;
+    }
+
+    public void setTaskOwner(String taskOwner) {
+        this.taskOwner = taskOwner;
     }
 }

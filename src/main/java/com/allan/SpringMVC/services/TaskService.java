@@ -1,10 +1,10 @@
 package com.allan.SpringMVC.services;
 
-import com.allan.SpringMVC.models.Task;
-import com.allan.SpringMVC.models.TaskDTO;
+import com.allan.SpringMVC.models.Entities.Task;
+import com.allan.SpringMVC.models.DTOs.TaskDTO;
+import com.allan.SpringMVC.models.Entities.User;
 import com.allan.SpringMVC.repositories.TaskRepository;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,13 +16,12 @@ import java.util.Optional;
 public class TaskService {
 
     private  final TaskRepository taskRepository;
-
     public TaskService(TaskRepository taskRepository){
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> findAll(){
-       return  taskRepository.findAll();
+    public List<Task> findAllTaskOfUser(String taskOwner){
+        return taskRepository.findByTaskOwner(taskOwner);
     }
 
     public Task getTaskById(Long id){
@@ -41,6 +40,9 @@ public class TaskService {
             Task task = new Task();
             task.setName(taskDTO.getName());
             task.setDate(taskDate);
+
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            task.setTaskOwner(currentUser.getUsername());
 
             return taskRepository.save(task);
         }
