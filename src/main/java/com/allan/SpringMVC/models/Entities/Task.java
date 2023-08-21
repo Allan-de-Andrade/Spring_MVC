@@ -21,6 +21,9 @@ public class Task {
     @Column(nullable = false)
     private String taskOwner;
 
+    @Column(nullable = false)
+    private Boolean taskDeleted = false;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +54,13 @@ public class Task {
 
     public void setTaskOwner(String taskOwner) {
         this.taskOwner = taskOwner;
+    }
+
+    public Boolean getTaskDeleted() {
+        return taskDeleted;
+    }
+
+    public void setTaskDeleted(Boolean taskDeleted) {
+        this.taskDeleted = taskDeleted;
     }
 }

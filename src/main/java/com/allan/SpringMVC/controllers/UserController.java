@@ -4,6 +4,7 @@ import com.allan.SpringMVC.models.DTOs.UserDTO;
 import com.allan.SpringMVC.models.Entities.User;
 import com.allan.SpringMVC.services.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,6 +42,12 @@ public class UserController {
         if(!userDTO.getPassword().isEmpty() && !userDTO.getUsername().isEmpty())
           userService.saveUser(userDTO);
 
+        return "redirect:login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        SecurityContextHolder.getContext().setAuthentication(null);
         return "redirect:login";
     }
 }

@@ -33,8 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/signup").permitAll();
         http.authorizeRequests().anyRequest().authenticated().and().formLogin()
-                .loginPage("/login").loginProcessingUrl("/authentication").defaultSuccessUrl("/task/list",true)
-                .permitAll().and().authorizeRequests();
+                .loginPage("/login").loginProcessingUrl("/authentication").defaultSuccessUrl("/task/list",true).
+                permitAll();
 
         http.csrf().disable();
     }

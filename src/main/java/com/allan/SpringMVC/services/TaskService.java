@@ -4,11 +4,12 @@ import com.allan.SpringMVC.models.Entities.Task;
 import com.allan.SpringMVC.models.DTOs.TaskDTO;
 import com.allan.SpringMVC.models.Entities.User;
 import com.allan.SpringMVC.repositories.TaskRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -20,8 +21,9 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> findAllTaskOfUser(String taskOwner){
-        return taskRepository.findByTaskOwner(taskOwner);
+    public Page<Task> findAllTaskOfUser(String taskOwne,Pageable pageable){
+        Page<Task> taskList  = taskRepository.findByTaskOwnerAndTaskDeleted(taskOwne,false,pageable);
+        return taskList;
     }
 
     public Task getTaskById(Long id){
@@ -70,7 +72,9 @@ public class TaskService {
 
     public Boolean deleteTask(Long id){
         try {
-            taskRepository.deleteById(id);
+            Optional<Task> task = taskRepository.findById(id);
+            task.get().setTaskDeleted(true);
+            taskRepository.save(task.get());
             return Boolean.TRUE;
         }
         catch (Exception e)
