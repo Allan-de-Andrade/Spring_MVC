@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <nav class="navbar bg-primary" data-bs-theme="dark" >
+        <div class="container-fluid">
+            <a class = "navbar-brand mb-0 h1">Task Chedule</a></span>
+        </div>
+    </nav>
+
+    <form style="box-shadow:1px 1px 1px rgba(0,0,0,0.51) ; border-radius: 25px;" method="POST" action="/authentication"
+    >
+        <section style="margin:2%">
+            <h3>Login to Continue</h3>
+
+            <div class="mb-3" >
+                <label for="username" class="form-label">Username</label>
+                <input placeholder="Enter username" type="text" class="form-control" id="username" name="username"
+                      required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input placeholder="Enter  password" type="password"  name="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p>Not have aacount?<a href="/signup">Restrige here.</a></p>
+        </section>
+    </form>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

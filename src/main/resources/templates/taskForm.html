@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Chedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+        <nav class="navbar bg-primary" data-bs-theme="dark" >
+            <div class="container-fluid">
+                  <a class = "navbar-brand mb-0 h1" href="/home">Task Chedule</a></span>
+            </div>
+       </nav>
+       <h3>Registre a Task</h3>
+
+
+       <form th:object="${task}" method = "POST" action="/task/create" th:if="${task} == null" >
+           <div class="mb-3">
+               <label class="form-label">Task name</label>
+               <input placeholder="Enter a name of task" type="text" class="form-control" name = "name" required>
+           </div>
+
+           <div class="mb-3">
+               <label  class="form-label">Date of execute</label>
+                   <input placeholder="Enter a date of task" type="date" class="form-control"  name="date" autocomplete="off" required/>
+           </div>
+           </div>
+           <button type="submit" class="btn btn-primary">Save</button>
+       </form>
+
+        <form th:object="${task}" method = "POST" th:action="@{/task/edit/{id}(id = ${task.id})}" th:if="${task} != null">
+            <div class="mb-3">
+                <label class="form-label">Task name</label>
+                <input placeholder="Enter a name of task" type="text" class="form-control" name = "name" th:value="${task.name}" required>
+            </div>
+
+            <div class="mb-3">
+                <label  class="form-label">Date of execute</label>
+                <input placeholder="Enter a date of task" type="date" class="form-control"  name="date" autocomplete="off"th:value="${task.date}" required/>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
